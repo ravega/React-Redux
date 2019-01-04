@@ -1,23 +1,20 @@
 import React, {Component} from 'react';
-import Navigation from './Navigation';
-import { connect } from 'react-redux';
+import Menu from './Menu';
+import BookList from './BookList';
+import './bookstore.css';
 
 class Main extends Component {
     
     render(){
-        console.log('State: ', this.props.score);
         return(
             <div>
-                <Navigation/>
+                <div className="container">
+                  <Menu/>
+                  <BookList/>
+                </div>
             </div>
         );
     }
 }
 
-function mapStateToProps(state) {
-  return {
-    score: state
-  };
-}
-
-export default connect(mapStateToProps)(Main);
+export default Main;

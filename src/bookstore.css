@@ -22,7 +22,12 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 
 .navbarmb {
   margin-left: 10px;
-  color: red;
+  color: white;
+  font-size: x-large;
 }
 
-
+/* unvisited, visited, mouse over, selected link */
+a:link, a:visited, a:hover, a:active {
+  color: white;
+  text-decoration: none;
+}

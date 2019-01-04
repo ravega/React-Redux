@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import MaterialIcon from 'material-icons-react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { deleteBookAct } from './index';
 
 const List = ({items, remove}) => (
   items.map( (item) => (
@@ -8,21 +10,18 @@ const List = ({items, remove}) => (
     <td>{item.name}</td>
     <td>{item.price}</td>
     <td className="action">
-        <MaterialIcon icon="delete" color='#000000' onClick={() => remove(item.name)}/>
+      <MaterialIcon icon="delete" 
+                    color='#000000' 
+                    onClick={() => remove(item.name)}/>
     </td>
     <td className="action">
-        <Link to={`/info/${item.name}`}><MaterialIcon icon="edit" color='#000000'/></Link>
+      <Link to={`/info/${item.name}`}><MaterialIcon icon="edit" color='#000000' /></Link>
     </td>
   </tr>
   ))
 );
 
 class BookList extends Component {
-
-  deleteBookHandler = (name) => {
-    console.log('Deleting Book:', name);
-    this.props.remove(name);
-  }
 
   render() {
     return (
@@ -35,7 +34,7 @@ class BookList extends Component {
           <th></th>
           <th></th>
         </tr>
-	      <List items={this.props.books} remove={this.deleteBookHandler.bind(this)} />
+	      <List items={this.props.books} remove={this.props.bookListDeleteBook}/>
 	    </tbody>
      </table> 
     </div>
@@ -43,4 +42,16 @@ class BookList extends Component {
   }
 }
 
-export default BookList;
+function mapStateToProps(state) {
+  return {
+      books: state.books
+    }
+}
+
+const mapDispatchToProps = dispatch => ({
+  bookListDeleteBook: (name) => {
+      dispatch( deleteBookAct(name) ) 
+    }
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BookList));

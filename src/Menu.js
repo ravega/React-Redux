@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addBookAct } from './index';
 
 class Menu extends Component {
 
@@ -22,19 +24,25 @@ class Menu extends Component {
     });
   }
 
-  saveBookHandler = () => {
-    this.props.save(this.state.bookName, this.state.bookPrice);
-  }
-
   render() {
     return (
     <div>     
       <input value={this.state.bookName} onChange={evt => this.updateInputName(evt)}></input>
       <input value={this.state.bookPrice} onChange={evt => this.updateInputPrice(evt)}></input>
-      <button onClick={this.saveBookHandler.bind(this)}>Save book</button>
+      <button onClick={() => this.props.menuAddBook(this.state.bookName, this.state.bookPrice)}>Save book</button>
     </div>
     );
   }
 }
 
-export default Menu;
+function mapStateToProps(state) {
+  return state;
+}
+
+const mapDispatchToProps = dispatch => ({
+  menuAddBook: (name, price) => {
+      dispatch( addBookAct(name, price) ) 
+    }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 import MaterialIcon from 'material-icons-react';
 
 class Navigation extends React.Component {
@@ -9,7 +10,7 @@ class Navigation extends React.Component {
 	  <Navbar.Header>
 	    <Navbar.Brand>
         <MaterialIcon icon="dashboard" color='#ffffff'/>
-	      <a href="#brand" className="navbarmb">The Store</a>
+	      <Link to={`/`} className="navbarmb">The Store</Link>
 	    </Navbar.Brand>
 	    <Navbar.Toggle />
 	  </Navbar.Header>
