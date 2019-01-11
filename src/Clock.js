@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './bookstore.css';
 
 class Clock extends Component {
 
@@ -40,7 +41,7 @@ class Clock extends Component {
 
   render() {
     return (    
-      <h3 className="clock">{this.state.date}</h3>
+      <span className="clock pull-right">{this.state.date}</span>
     );
   }
 }

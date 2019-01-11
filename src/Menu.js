@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addBookAct } from './index';
+import Clock from './Clock';
 
 class Menu extends Component {
 
@@ -26,10 +27,12 @@ class Menu extends Component {
 
   render() {
     return (
-    <div>     
+    <div className="Row">     
       <input value={this.state.bookName} onChange={evt => this.updateInputName(evt)}></input>
       <input value={this.state.bookPrice} onChange={evt => this.updateInputPrice(evt)}></input>
       <button onClick={() => this.props.menuAddBook(this.state.bookName, this.state.bookPrice)}>Save book</button>
+
+      <Clock/>
     </div>
     );
   }
