@@ -1,7 +1,9 @@
 import React from 'react';
 import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import Clock from './Clock';
 import MaterialIcon from 'material-icons-react';
+import './bookstore.css';
 
 class Navigation extends React.Component {
   render() {
@@ -28,6 +30,9 @@ class Navigation extends React.Component {
 	      <NavItem eventKey={2} href="#">
           Log in
 	      </NavItem>
+        <NavItem>
+          <Clock/>
+        </NavItem>
 	    </Nav>
 	  </Navbar.Collapse>
 	</Navbar>
