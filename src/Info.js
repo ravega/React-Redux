@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MaterialIcon from 'material-icons-react';
+import PropTypes from 'prop-types';
 
 class Info extends Component {
 
@@ -19,6 +20,14 @@ class Info extends Component {
     </div>
     );
   }
+}
+
+Info.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      finame: PropTypes.string.isRequired
+    })
+  })
 }
 
 export default Info;

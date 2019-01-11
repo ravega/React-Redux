@@ -3,6 +3,7 @@ import MaterialIcon from 'material-icons-react';
 import {Link, withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deleteBookAct } from './index';
+import PropTypes from 'prop-types';
 
 const List = ({items, remove}) => (
   items.map( (item) => (
@@ -41,6 +42,10 @@ class BookList extends Component {
     );
   }
 }
+
+BookList.propTypes = {
+  books: PropTypes.array.isRequired
+};
 
 function mapStateToProps(state) {
   return {
