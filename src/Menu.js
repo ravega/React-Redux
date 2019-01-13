@@ -19,18 +19,14 @@ class Menu extends Component {
     });
   }
 
-  updateInputPrice(evt) {
-    this.setState({
-      bookPrice: evt.target.value
-    });
-  }
-
   render() {
     return (
     <div className="Row">     
-      <input value={this.state.bookName} onChange={evt => this.updateInputName(evt)}></input>
-      <input value={this.state.bookPrice} onChange={evt => this.updateInputPrice(evt)}></input>
-      <button onClick={() => this.props.menuAddBook(this.state.bookName, this.state.bookPrice)}>Save book</button>
+      <input value={this.state.bookName} onChange={evt => this.updateInputName(evt)}/>
+
+      <input ref={ node => {this.price = node} }/>
+
+      <button onClick={() => this.props.menuAddBook(this.state.bookName, this.price.value)}>Save book</button>
 
       <Clock/>
     </div>
